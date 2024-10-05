@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+##### "User Post Interface Project" ####
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Overview
+    This project is a user post interface built using React.js and Tailwind CSS with API integration. The app allows users to view posts, select specific users to see their posts, and create their own posts after a verification process. It implements features like pagination, comments, user profiles, and toast notifications.
 
-In the project directory, you can run:
+### Features   
+**User Selection:** Users can select a user from the homepage to view their posts. Post Display with Pagination: All posts are displayed with pagination, showing a limited number of posts per page.
+**Comments for Posts:** Each post has a comments section that can be expanded to show more  comments or collapsed to show less.
+**User Interface:** When a user is selected, their posts and profile are shown in a dedicated user interface.
+**Post Creation with Verification:** Users must fill a verification form before creating a post. The form checks if the username and email match the user list.
+**Toast Notification:** After successfully creating a post, a toast notification is displayed.
+Footer: A footer is displayed on every page.
 
-### `npm start`
+### Setup Instructions
+1. **Create a new React app:**
+   ```terminal
+   npx create-react-app devzery-assignment
+   cd devzery-assignment
+2. **Install Tailwind CSS:**
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+3. **Configure Tailwind CSS:**
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+    content: [
+        "./src/**/*.{js,jsx,ts,tsx}", // Adjust according to your file structure
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+    }
+4. **Add Tailwind directives to index.css file:**
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+5. **Start the development server:**
+    npm run start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# API Setup: Ensure the following APIs are correctly set up:
+GET Users List API
+GET Posts API
+GET Comments API for each post
+POST Create Post API
 
-### `npm test`
+### Approach
+1. The application is built with React.js using a component-based structure.
+2. Tailwind CSS is used for styling to create a responsive design.
+3. APIs are integrated using fetch requests to get the user list, posts, and comments, and to create new posts.
+4. State management is handled with React hooks (useState, useEffect).
+5. React Router is implemented to manage the routing and navigation. When a user is selected from the home page or click on author's name of any post, it navigates to userInterface where only their posts are visible.
+6. The post creation process requires user verification to ensure the user exists before allowing post creation.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Assumptions and Decisions
+1. The user must be verified (username and email match the user list) before creating a post.
+2. Pagination is used to limit the number of posts shown per page.
+3. The application assumes all necessary APIs are up and running.
 
-### `npm run build`
+### Completed Features
+1. Display of all users and posts on the home page.
+2. User selection to view individual user profiles and posts.
+3. Pagination for posts to improve user experience and performance.
+4. A comments section with toggle to show more or less comments.
+5. A post creation feature with verification form.
+6. Footer across all pages.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Known Issues
+**Pagination:** Minor issues with pagination when data is dynamically updated.
+**Verification:** If the user API is down, post creation may not work.
+**Styling:** Some responsiveness issues on very small or very large screens.
